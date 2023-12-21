@@ -11,7 +11,12 @@ public class AddressBook {
     }
 
     public void addContact(Contact contact) {
+        if (isDuplicate(contact)) {
+            System.out.println("Contact Already Present");
+            return;
+        }
         this.contacts.add(contact);
+        System.out.println("Contact added successfully");
     }
 
     public void viewContacts() {
@@ -22,24 +27,32 @@ public class AddressBook {
 
     public void editContact(String name, Contact updatedContact) {
         for (int i = 0; i < contacts.size(); i++) {
-
             Contact contact = contacts.get(i);
             if (contact.getfirstName().equalsIgnoreCase(name)) {
                 contacts.set(i, updatedContact);
+                System.out.println("Contact update successfully");
                 return;
             }
         }
-        System.out.println("Contact Not Found");
+        System.out.println("Contact not found");
     }
 
-    public boolean deleteContact(String name) {
+    public void deleteContact(String name) {
         for (int i = 0; i < contacts.size(); i++) {
-
             Contact contact = contacts.get(i);
             if (contact.getfirstName().equalsIgnoreCase(name)) {
                 contacts.remove(i);
-                return true;
+                System.out.println("Contact deleted successfully");
             }
+        }
+        System.out.println("Contact not found");
+
+    }
+
+    public boolean isDuplicate(Contact contact) {
+        for (Contact c : contacts) {
+            if (c.equals(contact))
+                return true;
         }
         return false;
     }

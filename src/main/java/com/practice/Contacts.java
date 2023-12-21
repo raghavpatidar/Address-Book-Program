@@ -38,4 +38,19 @@ class Contact {
         return firstName;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Contact other = (Contact) obj;
+        if (other.firstName.equalsIgnoreCase(this.firstName)
+                && other.lastName.equalsIgnoreCase(this.lastName))
+            return true;
+        return false;
+    }
+
 }
