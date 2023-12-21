@@ -7,7 +7,8 @@ public class AddressBookMain {
     public static final int ADD_CONTACT = 1;
     public static final int VIEW_CONTACT = 2;
     public static final int EDIT_CONTACT = 3;
-    public static final int EXIT = 4;
+    public static final int DELETE_CONTACT = 4;
+    public static final int EXIT = 5;
 
     public static void main(String[] args) {
 
@@ -18,7 +19,8 @@ public class AddressBookMain {
         boolean isExit = false;
 
         while (true) {
-            System.out.println("Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact \n4. Exit");
+            System.out.println(
+                    "Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact \n4. Delete Contact \5.Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -40,6 +42,17 @@ public class AddressBookMain {
                     Contact updateContact = getInputContact(scanner);
 
                     addressBook.editContact(name, updateContact);
+                    break;
+
+                case DELETE_CONTACT:
+                    System.out.println("Enter the first name of the contact to delete: ");
+                    name = scanner.nextLine();
+
+                    if (addressBook.deleteContact(name))
+                        System.out.println("Contact is deleted successfully");
+                    else
+                        System.out.println("Contact not found.");
+
                     break;
 
                 case EXIT:
