@@ -1,0 +1,8 @@
+# Ignore all .class files in the src directory
+/src/main/java/com/practice/*.class
+
+# Ignore bin and lib directories
+/bin/
+/lib/
+.vscode
+/target/classes
