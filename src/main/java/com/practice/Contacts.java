@@ -34,4 +34,8 @@ class Contact {
                 '}';
     }
 
+    public String getfirstName() {
+        return firstName;
+    }
+
 }
