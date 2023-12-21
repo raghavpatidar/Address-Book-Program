@@ -20,7 +20,7 @@ public class AddressBookMain {
 
         while (true) {
             System.out.println(
-                    "Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact \n4. Delete Contact \5.Exit");
+                    "Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact \n4. Delete Contact \n5.Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -47,12 +47,7 @@ public class AddressBookMain {
                 case DELETE_CONTACT:
                     System.out.println("Enter the first name of the contact to delete: ");
                     name = scanner.nextLine();
-
-                    if (addressBook.deleteContact(name))
-                        System.out.println("Contact is deleted successfully");
-                    else
-                        System.out.println("Contact not found.");
-
+                    addressBook.deleteContact(name);
                     break;
 
                 case EXIT:
