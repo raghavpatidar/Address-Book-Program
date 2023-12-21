@@ -6,7 +6,8 @@ public class AddressBookMain {
 
     public static final int ADD_CONTACT = 1;
     public static final int VIEW_CONTACT = 2;
-    public static final int EXIT = 3;
+    public static final int EDIT_CONTACT = 3;
+    public static final int EXIT = 4;
 
     public static void main(String[] args) {
 
@@ -17,7 +18,7 @@ public class AddressBookMain {
         boolean isExit = false;
 
         while (true) {
-            System.out.println("Choose an option: \n1. Add Contact \n2. View Contacts \n3. Exit");
+            System.out.println("Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact \n4. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -26,13 +27,26 @@ public class AddressBookMain {
                 case ADD_CONTACT:
                     addressBook.addContact(getInputContact(scanner));
                     break;
+
                 case VIEW_CONTACT:
                     addressBook.viewContacts();
                     break;
+
+                case EDIT_CONTACT:
+                    System.out.println("Enter the first name of the contact to edit: ");
+                    String name = scanner.nextLine();
+
+                    System.out.println("Enter details of new contact");
+                    Contact updateContact = getInputContact(scanner);
+
+                    addressBook.editContact(name, updateContact);
+                    break;
+
                 case EXIT:
                     isExit = true;
                     System.out.println("Exit Address Book");
                     break;
+
                 default:
                     System.out.println("Invalid Input , Please Try Again....");
                     break;

@@ -20,4 +20,16 @@ public class AddressBook {
         }
     }
 
+    public void editContact(String name, Contact updatedContact) {
+        for (int i = 0; i < contacts.size(); i++) {
+
+            Contact contact = contacts.get(i);
+            if (contact.getfirstName().equalsIgnoreCase(name)) {
+                contacts.set(i, updatedContact);
+                return;
+            }
+        }
+        System.out.println("Contact Not Found");
+    }
+
 }
