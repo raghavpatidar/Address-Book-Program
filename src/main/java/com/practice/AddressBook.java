@@ -3,6 +3,7 @@ package com.practice;
 import java.util.ArrayList;
 
 public class AddressBook {
+
     ArrayList<Contact> contacts;
 
     public AddressBook() {

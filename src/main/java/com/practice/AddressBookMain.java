@@ -9,15 +9,19 @@ public class AddressBookMain {
     public static final int EXIT = 3;
 
     public static void main(String[] args) {
+
         System.out.println("Welcome to Address Book Program");
+        AddressBook addressBook = new AddressBook();
+
         Scanner scanner = new Scanner(System.in);
         boolean isExit = false;
-        AddressBook addressBook = new AddressBook();
-        while (true) {
 
+        while (true) {
             System.out.println("Choose an option: \n1. Add Contact \n2. View Contacts \n3. Exit");
+
             int choice = scanner.nextInt();
             scanner.nextLine();
+
             switch (choice) {
                 case ADD_CONTACT:
                     addressBook.addContact(getInputContact(scanner));
