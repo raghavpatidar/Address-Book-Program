@@ -13,7 +13,9 @@ public class AddressBookMain {
     public static final int SORT_ENTRIES_BY_CITY = 6;
     public static final int SORT_ENTRIES_BY_STATE = 7;
     public static final int SORT_ENTRIES_BY_ZIP = 8;
-    public static final int EXIT = 9;
+    public static final int WRITE_TO_FILE = 9;
+    public static final int READ_FROM_FILE = 10;
+    public static final int EXIT = 11;
 
     public static void main(String[] args) {
         AddressBookService addressBookManager = new AddressBookService();
@@ -23,7 +25,7 @@ public class AddressBookMain {
     public static void performAddressBookOperations(AddressBook addressBook, Scanner scanner) {
         while (true) {
             System.out.println("Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact " +
-                    "\n4. Delete Contact \n5. Sort Entries by FirstName \n6. Sort Entries by City \n7. Sort Entries by State \n8. Srot Entries by Zip \n9. Back to Main Menu");
+                    "\n4. Delete Contact \n5. Sort Entries by FirstName \n6. Sort Entries by City \n7. Sort Entries by State \n8. Srot Entries by Zip \n9. Write to file  \n10. Read from file \n11. Back to Main Menu");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -58,15 +60,27 @@ public class AddressBookMain {
                     break;
 
                 case SORT_ENTRIES_BY_CITY:
-                    addressBook.sortEntriesByName();
+                    addressBook.sortEntriesByCity();
                     break;
 
                 case SORT_ENTRIES_BY_STATE:
-                    addressBook.sortEntriesByName();
+                    addressBook.sortEntriesByState();
                     break;
 
                 case SORT_ENTRIES_BY_ZIP:
-                    addressBook.sortEntriesByName();
+                    addressBook.sortEntriesByZip();
+                    break;
+
+                case WRITE_TO_FILE:
+                    System.out.println("Enter the file path to write the address book: ");
+                    String writeFilePath = scanner.nextLine();
+                    addressBook.writeToFile(writeFilePath);
+                    break;
+
+                case READ_FROM_FILE:
+                    System.out.println("Enter the file path to read the address book: ");
+                    String readFilePath = scanner.nextLine();
+                    addressBook.readFromFile(readFilePath);
                     break;
 
                 case EXIT:
