@@ -1,8 +1,9 @@
 package com.practice;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-class Contact {
+class Contact implements Serializable {
     String firstName;
     String lastName;
     String address;
