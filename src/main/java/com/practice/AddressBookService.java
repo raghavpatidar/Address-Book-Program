@@ -1,7 +1,5 @@
 package com.practice;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,8 @@ public class AddressBookService {
     public static final int SELECT_ADDRESS_BOOK = 2;
     public static final int SEARCH_PERSON_IN_CITY_OR_STATE = 3;
     public static final int VIEW_PERSON_CITY_OR_STATE = 4;
-    public static final int EXIT_ADDRESS_BOOK = 5;
+    public static final int COUNT_PERSON_CITY_OR_STATE = 5;
+    public static final int EXIT_ADDRESS_BOOK = 6;
 
     AddressBookService() {
         addressBooks = new HashMap<>();
@@ -27,7 +26,7 @@ public class AddressBookService {
 
         while (true) {
             System.out.println(
-                    "Choose an option: \n1. Add Address Book \n2. Select Address Book \n3. Search Person in City or State \n4. View person in city of state \n5. Exit");
+                    "Choose an option: \n1. Add Address Book \n2. Select Address Book \n3. Search Person in City or State \n4. View person in city of state \n5.  Count person in city of state \n6. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -49,6 +48,9 @@ public class AddressBookService {
 
                 case VIEW_PERSON_CITY_OR_STATE:
                     viewPersonsByCityOrState(scanner);
+                    break;
+                case COUNT_PERSON_CITY_OR_STATE:
+                    countPersonsByCityOrState(scanner);
                     break;
 
                 case EXIT_ADDRESS_BOOK:
@@ -141,6 +143,51 @@ public class AddressBookService {
 
         if (!found) {
             System.out.println("No contact Found");
+        }
+    }
+
+    public void countPersonsByCityOrState(Scanner scanner) {
+        System.out.println("Choose an option: \n1. count Persons in City \n2. count Persons in State");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                countPersonsByDictionary(1, scanner);
+                break;
+
+            case 2:
+                countPersonsByDictionary(2, scanner);
+                break;
+
+            default:
+                System.out.println("Invalid Input, Please Try Again....");
+                break;
+        }
+    }
+
+    private void countPersonsByDictionary(int type, Scanner scanner) {
+
+        System.out.print("Enter the city or state: ");
+        String location = scanner.nextLine();
+        location = location.toLowerCase();
+        int count = 0;
+
+        for (AddressBook addressBook : addressBooks.values()) {
+            Map<String, List<Contact>> map;
+            if (type == 1)
+                map = addressBook.getCityPersonMap();
+            else
+                map = addressBook.getStatePersonMap();
+
+            if (map.containsKey(location))
+                count += map.get(location).size();
+        }
+
+        if (count == 0) {
+            System.out.println("No contact Found");
+        } else {
+            System.out.println("Total Contact in " + location + " are :" + count);
         }
     }
 
