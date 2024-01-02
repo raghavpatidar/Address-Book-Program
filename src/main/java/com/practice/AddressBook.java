@@ -3,10 +3,12 @@ package com.practice;
 import java.util.ArrayList;
 
 public class AddressBook {
+    private String name;
 
     ArrayList<Contact> contacts;
 
-    public AddressBook() {
+    public AddressBook(String name) {
+        this.name = name;
         this.contacts = new ArrayList<>();
     }
 
@@ -57,4 +59,7 @@ public class AddressBook {
         return false;
     }
 
+    public String getName() {
+        return name;
+    }
 }
