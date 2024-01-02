@@ -1,19 +1,23 @@
 package com.practice;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AddressBook {
     private String name;
 
-    ArrayList<Contact> contacts;
+    private ArrayList<Contact> contacts;
 
-    public ArrayList<Contact> getContacts() {
-        return contacts;
-    }
+    private Map<String, List<Contact>> cityPersonMap;
+    private Map<String, List<Contact>> statePersonMap;
 
     public AddressBook(String name) {
         this.name = name;
         this.contacts = new ArrayList<>();
+        this.cityPersonMap = new HashMap<>();
+        this.statePersonMap = new HashMap<>();
     }
 
     public void addContact(Contact contact) {
@@ -22,6 +26,7 @@ public class AddressBook {
             return;
         }
         this.contacts.add(contact);
+        updateCityStateMap(contact);
         System.out.println("Contact added successfully");
     }
 
@@ -63,7 +68,28 @@ public class AddressBook {
         return false;
     }
 
+    public void updateCityStateMap(Contact contact) {
+        String city = contact.getCity().toLowerCase();
+
+        cityPersonMap.computeIfAbsent(city, k -> new ArrayList<>()).add(contact);
+
+        String state = contact.getAddress().toLowerCase();
+        statePersonMap.computeIfAbsent(state, k -> new ArrayList<>()).add(contact);
+    }
+
     public String getName() {
         return name;
+    }
+
+    public Map<String, List<Contact>> getCityPersonMap() {
+        return cityPersonMap;
+    }
+
+    public Map<String, List<Contact>> getStatePersonMap() {
+        return statePersonMap;
+    }
+
+    public ArrayList<Contact> getContacts() {
+        return contacts;
     }
 }
