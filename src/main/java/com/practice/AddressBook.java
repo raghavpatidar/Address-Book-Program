@@ -52,10 +52,10 @@ public class AddressBook {
     }
 
     public boolean isDuplicate(Contact contact) {
-        for (Contact c : contacts) {
+        for (Contact c : contacts)
             if (c.equals(contact))
                 return true;
-        }
+
         return false;
     }
 

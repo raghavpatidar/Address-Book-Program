@@ -5,6 +5,11 @@ import java.util.Objects;
 class Contact {
     String firstName;
     String lastName;
+
+    public String getLastName() {
+        return lastName;
+    }
+
     String address;
     String city;
     String zip;
