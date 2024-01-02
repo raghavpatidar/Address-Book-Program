@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.*;
 
 public class AddressBook {
     private String name;
@@ -80,9 +79,27 @@ public class AddressBook {
     }
 
     public void sortEntriesByName() {
-        // Sort contacts alphabetically by person's name
+
         contacts.sort(Comparator.comparing(Contact::getfirstName));
         System.out.println("Entries sorted alphabetically by Person's Name.");
+    }
+
+    public void sortEntriesByCity() {
+
+        contacts.sort(Comparator.comparing(Contact::getCity));
+        System.out.println("Entries sorted by City.");
+    }
+
+    public void sortEntriesByState() {
+
+        contacts.sort(Comparator.comparing(Contact::getAddress));
+        System.out.println("Entries sorted by State.");
+    }
+
+    public void sortEntriesByZip() {
+
+        contacts.sort(Comparator.comparing(Contact::getZip));
+        System.out.println("Entries sorted by Zip.");
     }
 
     public String getName() {
