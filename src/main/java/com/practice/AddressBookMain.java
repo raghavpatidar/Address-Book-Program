@@ -9,7 +9,8 @@ public class AddressBookMain {
     public static final int VIEW_CONTACT = 2;
     public static final int EDIT_CONTACT = 3;
     public static final int DELETE_CONTACT = 4;
-    public static final int EXIT = 5;
+    public static final int SORT_ENTRIES_BY_NAME = 5;
+    public static final int EXIT = 6;
 
     public static void main(String[] args) {
         AddressBookService addressBookManager = new AddressBookService();
@@ -19,7 +20,7 @@ public class AddressBookMain {
     public static void performAddressBookOperations(AddressBook addressBook, Scanner scanner) {
         while (true) {
             System.out.println("Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact " +
-                    "\n4. Delete Contact \n5. Back to Main Menu");
+                    "\n4. Delete Contact \n5 Sort Entries by FirstName  \n6. Back to Main Menu");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -47,6 +48,9 @@ public class AddressBookMain {
                     System.out.print("Enter the first name of the contact to delete: ");
                     name = scanner.nextLine();
                     addressBook.deleteContact(name);
+                    break;
+                case SORT_ENTRIES_BY_NAME:
+                    addressBook.sortEntriesByName();
                     break;
 
                 case EXIT:

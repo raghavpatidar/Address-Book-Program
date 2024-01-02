@@ -1,9 +1,11 @@
 package com.practice;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.*;
 
 public class AddressBook {
     private String name;
@@ -75,6 +77,12 @@ public class AddressBook {
 
         String state = contact.getAddress().toLowerCase();
         statePersonMap.computeIfAbsent(state, k -> new ArrayList<>()).add(contact);
+    }
+
+    public void sortEntriesByName() {
+        // Sort contacts alphabetically by person's name
+        contacts.sort(Comparator.comparing(Contact::getfirstName));
+        System.out.println("Entries sorted alphabetically by Person's Name.");
     }
 
     public String getName() {
