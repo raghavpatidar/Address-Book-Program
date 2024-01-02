@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class AddressBookManager {
+public class AddressBookService {
     private Map<String, AddressBook> addressBooks;
     public static final int ADD_ADDRESS_BOOK = 1;
     public static final int SELECT_ADDRESS_BOOK = 2;
     public static final int EXIT_ADDRESS_BOOK = 3;
 
-    AddressBookManager() {
+    AddressBookService() {
         addressBooks = new HashMap<>();
     }
 
