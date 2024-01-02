@@ -7,6 +7,10 @@ public class AddressBook {
 
     ArrayList<Contact> contacts;
 
+    public ArrayList<Contact> getContacts() {
+        return contacts;
+    }
+
     public AddressBook(String name) {
         this.name = name;
         this.contacts = new ArrayList<>();

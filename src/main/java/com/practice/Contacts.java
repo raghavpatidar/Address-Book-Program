@@ -5,11 +5,6 @@ import java.util.Objects;
 class Contact {
     String firstName;
     String lastName;
-
-    public String getLastName() {
-        return lastName;
-    }
-
     String address;
     String city;
     String zip;
@@ -28,6 +23,34 @@ class Contact {
         this.email = email;
     }
 
+    public String getfirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return "Contact{" +
@@ -39,10 +62,6 @@ class Contact {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
-    }
-
-    public String getfirstName() {
-        return firstName;
     }
 
     @Override
