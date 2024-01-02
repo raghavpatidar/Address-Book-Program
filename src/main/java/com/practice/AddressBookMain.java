@@ -34,17 +34,17 @@ public class AddressBookMain {
                     break;
 
                 case EDIT_CONTACT:
-                    System.out.println("Enter the first name of the contact to edit: ");
+                    System.out.print("Enter the first name of the contact to edit: ");
                     String name = scanner.nextLine();
 
-                    System.out.println("Enter details of new contact");
+                    System.out.print("Enter details of new contact");
                     Contact updateContact = getInputContact(scanner);
 
                     addressBook.editContact(name, updateContact);
                     break;
 
                 case DELETE_CONTACT:
-                    System.out.println("Enter the first name of the contact to delete: ");
+                    System.out.print("Enter the first name of the contact to delete: ");
                     name = scanner.nextLine();
                     addressBook.deleteContact(name);
                     break;
