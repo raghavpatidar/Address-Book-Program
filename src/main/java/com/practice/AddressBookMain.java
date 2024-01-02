@@ -1,3 +1,4 @@
+
 package com.practice;
 
 import java.util.Scanner;
@@ -11,16 +12,14 @@ public class AddressBookMain {
     public static final int EXIT = 5;
 
     public static void main(String[] args) {
+        AddressBookService addressBookManager = new AddressBookService();
+        addressBookManager.startAddressBookSystem();
+    }
 
-        System.out.println("Welcome to Address Book Program");
-        AddressBook addressBook = new AddressBook();
-
-        Scanner scanner = new Scanner(System.in);
-        boolean isExit = false;
-
+    public static void performAddressBookOperations(AddressBook addressBook, Scanner scanner) {
         while (true) {
-            System.out.println(
-                    "Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact \n4. Delete Contact \n5.Exit");
+            System.out.println("Choose an option: \n1. Add Contact \n2. View Contacts \n3. Edit Contact " +
+                    "\n4. Delete Contact \n5. Back to Main Menu");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -51,19 +50,14 @@ public class AddressBookMain {
                     break;
 
                 case EXIT:
-                    isExit = true;
-                    System.out.println("Exit Address Book");
-                    break;
+                    System.out.println("Back to Main Menu");
+                    return;
 
                 default:
                     System.out.println("Invalid Input , Please Try Again....");
                     break;
             }
-            if (isExit)
-                break;
         }
-        scanner.close();
-
     }
 
     public static Contact getInputContact(Scanner scanner) {
@@ -88,9 +82,6 @@ public class AddressBookMain {
         System.out.print("Email : ");
         String email = scanner.nextLine();
 
-        Contact contact = new Contact(firstName, lastName, address, city, zip, phoneNumber, email);
-        return contact;
-
+        return new Contact(firstName, lastName, address, city, zip, phoneNumber, email);
     }
-
 }

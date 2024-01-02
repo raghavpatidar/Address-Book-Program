@@ -1,5 +1,7 @@
 package com.practice;
 
+import java.util.Objects;
+
 class Contact {
     String firstName;
     String lastName;
@@ -51,6 +53,11 @@ class Contact {
                 && other.lastName.equalsIgnoreCase(this.lastName))
             return true;
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName);
     }
 
 }
